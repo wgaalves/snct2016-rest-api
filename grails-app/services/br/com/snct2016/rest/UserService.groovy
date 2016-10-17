@@ -31,7 +31,7 @@ class UserService {
 
     }
 
-    def update(){
+    def update(params){
 
         def map = [:]
 
@@ -50,8 +50,7 @@ class UserService {
                     user.email = params.email
 
                 user.save(failOnError: true,flush: true)
-                map.put("status",200)
-                map.put("text","User Updated")
+                map.put("user",user)
             }catch (Exception e){
                 log.debug(e.getMessage())
             }

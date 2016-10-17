@@ -14,7 +14,7 @@ class UserController {
     def update(){
         def response = userService.update(params)
 
-        render(status: response.status,text: response.text) as JSON
+        render response.user as JSON
     }
 
     def delete(){
