@@ -61,9 +61,10 @@ class UserService {
 
     }
 
-    def delete() {
+    def delete(params) {
         def map = [:]
 
+        log.debug(params)
         if (!params.id) {
             map.put("status", 200)
             map.put("text", "User not found")
@@ -73,12 +74,13 @@ class UserService {
                 def user = User.get(params.id)
                 user.delete(flush: true)
                 map.put("status", 200)
-                map.put("text", "User Updated")
+                map.put("text", "User deleted sucessfully")
             } catch (Exception e) {
                 log.debug(e.getMessage())
 
             }
         }
+        return map
     }
 
     def get(params){

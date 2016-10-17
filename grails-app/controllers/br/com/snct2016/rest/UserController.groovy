@@ -18,7 +18,7 @@ class UserController {
     }
 
     def delete(){
-        def response = userService.save(params)
+        def response = userService.delete(params)
 
         render(status: response.status,text: response.text) as JSON
     }
